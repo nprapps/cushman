@@ -1,12 +1,697 @@
 <!doctype html>
-<html lang="en-US">
-  <head>
-    <%= t.include("partials/_head.html", grunt.data.json) %>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<%= t.include("partials/_head.html", grunt.data.json) %>
 
-    <script src="app.js" async></script>
-    <%= t.include("partials/_analytics.html") %>
-  </body>
+	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Hammersmith+One'>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<!-- Begin JavaScript -->
+		<script src="modernizr-2.0.6.min.js"></script>
+		<script src="jquery-1.6.2.min.js"></script>
+		<script src="popcorn-complete.min.js"></script>
+		<script src="plugins.js"></script>
+
+	 	<script type="text/javascript">
+		//<![CDATA[
+		$(document).ready(function(){
+
+			$("#pop-audio").jPlayer({
+				ready: function () {
+					$(this).jPlayer("setMedia", {
+						mp3: "https://apps.npr.org/cushman-lost-and-found/assets/synced/20120913_specials_cushman.mp3",
+						oga: "https://apps.npr.org/cushman-lost-and-found/assets/synced/20120913_specials_cushman.ogg"
+					}).jPlayer("pause");
+				},
+				play: function() { // To avoid both jPlayers playing together.
+					$(this).jPlayer("pauseOthers");
+				},
+				ended: function (event) {
+					$(this).jPlayer("pause");
+				},
+				swfPath: "js",
+				supplied: "oga, mp3",
+				//errorAlerts:true
+			});
+
+			$('#lm').click(function() {
+				$.smoothScroll({
+					speed: 800,
+					scrollTarget: '#learn'
+				});
+				return false;
+			});
+
+			//jplayer events
+
+			$('#title-button').click(function() {
+				$.smoothScroll({
+					speed: 800,
+					scrollTarget: '#introduction'
+				});
+				return false;
+			});
+
+			$('#second_player').click(function() {
+				$.smoothScroll({
+					speed: 800,
+					scrollTarget: '#chapter1',
+					afterScroll: function() {$("#pop-audio").jPlayer("play", 0);}
+				});
+				return false;
+			});
+
+			//chapter 1
+			$('#discovery').click(function() {
+				$.smoothScroll({
+					scrollTarget: '#chapter1',
+					afterScroll: function() {$("#pop-audio").jPlayer("play", 0);}
+				});
+				return false;
+			});
+			//chapter 2
+			$("#witness").click( function() {
+  				$("#pop-audio").jPlayer("play", 65);
+			});
+			//chapter 3
+			$("#obsessive").click( function() {
+  				$("#pop-audio").jPlayer("play", 117);
+			});
+			//chapter 4
+			$("#mythic").click( function() {
+  				$("#pop-audio").jPlayer("play", 243);
+			});
+
+			$("#learn-more").click( function() {
+  				$("#pop-audio").jPlayer("pause");
+			});
+			//learn more
+			$('#learn-more').click(function() {
+				$.smoothScroll({
+					speed: 900,
+					scrollTarget: '#learn',
+					afterScroll: function() {$("#pop-audio").jPlayer("pause");}
+				});
+				return false;
+			});
+
+
+		});
+		//]]>
+		</script>
+	<!-- End JavaScript -->
+	<script src="text.js"></script>
+</head>
+
+<body id="top">
+
+<div id="global-header" class="clearfix">
+
+			<nav id="main-nav">
+				<ul>
+					<li id="home"><a href="https://www.npr.org/"><img src="./assets/synced/img/npr.jpg" alt="NPR" width="55" height="18" /></a></li>
+					<li><a href="https://www.npr.org/sections/news/">news</a></li>
+					<li><a href="https://www.npr.org/sections/arts/">arts &amp; life</a></li>
+					<li><a href="https://www.npr.org/music/">music</a></li>
+				</ul>
+			</nav><!-- /main-nav -->
+
+</div> <!-- global-header -->
+
+<!-- ========================================= TITLE =================================== -->
+<div  id="titlecard">
+	<div id="title">
+		<div id="title-inner">
+		 <a id="title-button" href="#">
+		<h5>NPR's Picture Show presents</h5>
+		<h1><span>Lost and</span> found</h1>
+			<h2>discover a black-and-white era <b>in full color &#9660;</b></h2></a>
+		</div><!--/title-inner-->
+
+	</div><!--/title-->
+
+	<div class="carousel" data-autoplay>
+	    <div>
+			<img src="./assets/synced/img/half-cushman.jpg" alt="canyon">
+	    </div><!--/1-->
+
+	    <div>
+	    	<img src="./assets/synced/img/carousel6.jpg" alt="car">
+	    </div><!--/2-->
+	    <div>
+			<img src="./assets/synced/img/carousel9.jpg" alt="travels">
+	    </div><!--/3-->
+	</div><!--/carousel-->
+</div> <!-- titlecard -->
+
+<div id="introduction">
+	<div id="intro-inner">
+
+		<div id="intro-text">
+		<h2>The year is 1938</h2>
+
+		<h4>&#8230; when an amateur photographer named Charles W. Cushman starts experimenting with a new technology: Color film. Few would follow suit in those early days. But for decades, Cushman remained obsessed.</h4>
+
+		<h4><b>Not long ago,</b> photo researcher Rich Remsberg rescued a bunch of Cushman's photos that were headed for the trash. The rest had already been saved by Indiana University. Together, they amount to some 14,500 images.</h4>
+
+		<h4>Within that archive lies an incredible story of road trips, attempted murder and, above all, one man's lifelong search for depth of field. </h4>
+
+		<h6><a id="second_player" href="#">Play &#9656;</a></h6>
+		</div><!--/intro-text-->
+	</div><!--/intro-inner-->
+</div>
+
+<div id="navbar">
+	<!--<p id="home"><a href="#global-header">Home</a></p>-->
+
+	<div id="audio">
+
+		<div id="pop-audio" class="jp-jplayer"></div>
+
+		<div class="jp-audio-container">
+			<div class="jp-audio">
+				<div class="jp-type-single">
+
+					<div id="jp_interface_1" class="jp-interface">
+						<ul class="jp-controls">
+							<li><a href="#" class="jp-play" tabindex="1">play</a></li>
+							<li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
+
+							<li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
+							<li><a href="#" class="jp-unmute" tabindex="1">unmute</a></li>
+
+						</ul>
+						<div class="jp-progress-container">
+							<div class="jp-progress">
+								<div class="jp-seek-bar">
+									<div class="jp-play-bar"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="jp-volume-bar-container">
+							<div class="jp-volume-bar">
+								<div class="jp-volume-bar-value"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> <!--/audio -->
+
+	<ul id="chapter-nav">
+		<li><div id="disco"><a id="discovery" href="#c1">discovery</a></div></li>
+		<li><div id="wit"><a id="witness" href="#c2">witness</a></div></li>
+		<li><div id="ob"><a id="obsessive" href="#c3">obsessive</a></div></li>
+		<li><div id="myth"><a id="mythic" href="#c4">depth</a></div></li>
+		<!--<li><div id="lm"><a id="learn-more" href="#c5">learn more</a></div></li>
+		<li id="up"><a href="#top">top &uarr;</a></li>-->
+	</ul>
+
+</div> <!--/navbar -->
+
+<!-- !chapter1 -->
+<div id="chapter1" class="panel">
+
+
+	<div class="panel-inner">
+
+	<div id="c1-intro">
+	<h2>The Discovery</h2>
+	</div>
+
+	<div id="photo1">
+		<h2>The Discoverer</h2>
+		<p class="credit">Credit: Robb Hill</p>
+	</div> <!-- /.card -->
+
+	<!--<div id="photo1b" class="card">
+		<img src="./assets/synced/img/cush-photos/stuff.jpg" alt="stuff" class="scale-with-grid">
+	</div>  /.card -->
+
+	<div id="photo2">
+		<h2>Boxes and boxes</h2>
+	</div> <!-- /.card -->
+
+	<div id="photo3" class="card">
+		<img src="./assets/synced/img/cush-photos/az1939.jpg" alt="arizona" class="scale-with-grid">
+		<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=year%3A1939&page=8&pagesize=20&display=thumbcap&action=browse&pnum=P01688">Charles W. Cushman gazes out over the Grand Canyon in Arizona,</a> Nov. 29, 1939.</p>
+	</div> <!-- /.card -->
+
+	<div id="photo4" class="card">
+		<img src="./assets/synced/img/cush-photos/movie1940.jpg" alt="movie" class="scale-with-grid">
+		<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=year%3A1940&page=3&pagesize=20&display=thumbcap&action=browse&pnum=P01799">On the set of the movie "Arizona,"</a> April, 1940</p>
+	</div> <!-- /.card -->
+
+	<div id="photo5" class="card">
+		<img src="./assets/synced/img/cush-photos/kids1940.jpg" alt="kids" class="scale-with-grid">
+		<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=year%3A1940&page=5&pagesize=20&display=thumbcap&action=browse&pnum=P01828">Mammoth, Ariz.,</a> May 1940</p>
+	</div> <!-- /.card -->
+
+	<div id="photo5b">
+		<h2>Charles W. Cushman</h2>
+	</div>
+
+	<div id="photo6" class="card">
+		<img src="./assets/synced/img/cush-photos/goldengate1938.jpg" alt="golden gate" class="scale-with-grid">
+		<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=year%3A1938&page=1&pagesize=20&display=thumbcap&action=browse&pnum=P01413">Cushman's car in front of the Golden Gate Bridge, San Francisco,</a> September 1938</p>
+	</div> <!-- /.card -->
+
+	<div id="photo7" class="card">
+		<img src="./assets/synced/img/cush-photos/golden38.jpg" alt="golden gate" class="scale-with-grid">
+		<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=golden+gate+1938&page=1&pagesize=20&display=thumbcap&action=search&pnum=P01411">One of the first color images of the Golden Gate Bridge,</a> September 1938</p>
+	</div> <!-- /.card -->
+
+	<div id="photo8" class="card">
+		<img src="./assets/synced/img/cush-photos/redfield.jpg" alt="redfield" class="scale-with-grid">
+		<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=year%3A1939&page=5&pagesize=20&display=thumbcap&action=browse&pnum=P01642">Red clover near Nashville, Tenn.,</a> May 1939</p>
+	</div> <!-- /.card -->
+
+		<div id="c2-intro" class="card">
+			<h2>A witness to his time</h2>
+		</div> <!-- /.card -->
+
+		<div id="photo9a" class="card">
+			<img src="./assets/synced/img/young-cush.png" alt="bio" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=posey&page=2&pagesize=20&display=thumbcap&action=search&pnum=P02238">Barn in Posey County, Ind.,</a> April 1941 and Cushman at age 2 (Indiana University Archives)</p>
+		</div> <!-- /.card -->
+
+		<div id="photo9" class="card">
+			<img src="./assets/synced/img/cush-photos/posey.jpg" alt="posey" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=indiana+field&page=1&pagesize=20&display=thumbcap&action=search&pnum=P02119">Sunset on a new wheat field near Poseyville, Ind.</a> October 1940</p>
+		</div> <!-- /.card -->
+
+		<div id="photo9b" class="card">
+			<img src="./assets/synced/img/cush-photos/economy2.jpg" alt="economy2" class="scale-with-grid">
+		<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=chicago&page=1&pagesize=20&display=thumbcap&action=search&pnum=P02123">Steel mill in south Chicago,</a> October 1940</p>
+		</div> <!-- /.card -->
+
+		<div id="photo10" class="card">
+			<img src="./assets/synced/img/cush-photos/change.jpg" alt="change" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=posey&page=2&pagesize=20&display=thumbcap&action=search&pnum=P02545">Farm scene in Posey County, Ind.,</a> October 1941</p>
+		</div> <!-- /.card -->
+
+		<div id="photo11" class="card">
+			<img src="./assets/synced/img/cush-photos/kid.jpg" alt="kid" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=grandpa&page=1&pagesize=20&display=thumbcap&action=search&pnum=P02243">Skipping rope in New Harmony, Ind.,</a> April 1941</p>
+		</div> <!-- /.card -->
+
+		<div id="photo12" class="card">
+			<img src="./assets/synced/img/cush-photos/oldnew.jpg" alt="old new" class="scale-with-grid">
+				<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=Kaskaskia&page=1&pagesize=20&display=thumbcap&action=search&pnum=P04410">Broken farm wagon near Kaskaskia, Ill.,</a> May 1949</p>
+		</div> <!-- /.card -->
+
+		<div id="photo14" class="card">
+			<img src="./assets/synced/img/cush-photos/commodity2.jpg" alt="commodity" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=Tuckerman&page=1&pagesize=20&display=thumbcap&action=search&pnum=P06920">Cotton pickers along U.S. Route 67 near Tuckerman, Ark.,</a> November 1953</p>
+		</div> <!-- /.card -->
+
+		<div id="photo15" class="card">
+			<img src="./assets/synced/img/cush-photos/commodity6.jpg" alt="commodity" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=Monolith+Cement+Co&page=1&pagesize=20&display=thumbcap&action=search&pnum=P07091">Smoke from Monolith Cement Company mill, Monolith, Calif.,</a> November 1953</p>
+		</div> <!-- /.card -->
+
+		<div id="photo17" class="card">
+			<img src="./assets/synced/img/cush-photos/commodity9.jpg" alt="commodity" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=train&page=2&pagesize=20&display=thumbcap&action=search&pnum=P09278">Union Pacific freight train in Cajon Canyon, Calif., </a>May 1957</p>
+		</div> <!-- /.card -->
+
+		<div id="c3-intro" class="card">
+			<h2>The hobbyist and the obsessive</h2>
+		</div> <!-- /.card -->
+
+		<div id="photo21" class="card">
+			<img src="./assets/synced/img/cush-photos/ggbridge_1957b.jpg" alt="golden gate bridge 1957" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=golden+gate+1957&page=1&pagesize=20&display=thumbcap&action=search&pnum=P09317">Golden Gate Bridge, </a>June 1957</p>
+		</div> <!-- /.card -->
+
+		<div id="photo22" class="card">
+			<img src="./assets/synced/img/cush-photos/gg_1953.jpg" alt="golden gate bridge 1953" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=golden+gate+1953&page=1&pagesize=20&display=thumbcap&action=search&pnum=P06567">Golden Gate Bridge, </a>February 1953</p>
+		</div> <!-- /.card -->
+
+		<div id="photo23" class="card">
+			<img src="./assets/synced/img/cush-photos/ggbridge_1955.jpg" alt="golden gate bridge 1955" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=golden+gate+1955&page=1&pagesize=20&display=thumbcap&action=search&pnum=P07663">Golden Gate Bridge, </a>March 1955</p>
+		</div> <!-- /.card -->
+
+		<div id="photo24" class="card">
+			<img src="./assets/synced/img/cush-photos/ggbridge_1956.jpg" alt="golden gate bridge 1956" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=golden+gate+1956&page=2&pagesize=20&display=thumbcap&action=search&pnum=P08746">Golden Gate Bridge, </a>May 1956</p>
+		</div> <!-- /.card -->
+
+		<div id="photo25" class="card">
+			<img src="./assets/synced/img/cush-photos/ggbridge_1957.jpg" alt="golden gate bridge 1957" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=%22golden+gate%22&page=14&pagesize=20&display=thumbcap&action=search&pnum=P09118">Golden Gate Bridge, </a>March 1957</p>
+		</div> <!-- /.card -->
+
+		<div id="photo26" class="card">
+			<img src="./assets/synced/img/cush-photos/ggbridge_1962.jpg" alt="golden gate bridge 1962" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=golden+gate+1962&page=1&pagesize=20&display=thumbcap&action=search&pnum=P12797">Golden Gate Bridge, </a>October 1962</p>
+		</div> <!-- /.card -->
+
+		<div id="photo27" class="card">
+			<img src="./assets/synced/img/cush-photos/beach7.jpg" alt="beach" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean&page=2&pagesize=20&display=thumbcap&action=search&pnum=P03470">Jean Neil sunbathing in Chicago, Ill., </a>September 1946</p>
+		</div> <!-- /.card -->
+
+		<div id="photo30" class="card">
+			<img src="./assets/synced/img/cush-photos/beach9.jpg" alt="beach" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean+charles&page=1&pagesize=20&display=thumbcap&action=search&pnum=P01601">Sunbathers in Chicago,</a> July 1941</p>
+		</div> <!-- /.card -->
+
+		<div id="photo31" class="card">
+			<img src="./assets/synced/img/cush-photos/beach10.jpg" alt="beach" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=bathing&page=2&pagesize=20&display=thumbcap&action=search&pnum=P02359">Judy Sargent (left) and friend in Chicago,</a> July 1941</p>
+		</div> <!-- /.card -->
+
+		<div id="photo33" class="card">
+			<img src="./assets/synced/img/cush-photos/jean2.jpg" alt="jean" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean&page=3&pagesize=20&display=thumbcap&action=search&pnum=P05638">Jean Cushman, Massai Point, Ariz.,</a> January 1952</p>
+		</div> <!-- /.card -->
+
+		<div id="photo34" class="card">
+			<img src="./assets/synced/img/cush-photos/jean17.jpg" alt="jean" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean&page=4&pagesize=20&display=thumbcap&action=search&pnum=P04328">Jean,</a> February 1955</p>
+		</div> <!-- /.card -->
+
+		<div id="photo35" class="card">
+			<img src="./assets/synced/img/cush-photos/couple3.jpg" alt="couple3" class="scale-with-grid">
+		<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean+charles&page=1&pagesize=20&display=thumbcap&action=search&pnum=P01589">Cushman and his wife, Jean, at the Wofford Hotel in Miami, Fla.</a> March 1939</p>
+		</div> <!-- /.card -->
+
+		<div id="photo35b" class="card">
+			<img src="./assets/synced/img/cush-photos/couple4.jpg" alt="couple4" class="scale-with-grid">
+		<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean+charles&page=1&pagesize=20&display=thumbcap&action=search&pnum=P01601">Cushman and Jean, Miami, Fla.</a> April 1939</p>
+		</div> <!-- /.card -->
+
+		<div id="photo36" class="card">
+			<img src="./assets/synced/img/cush-photos/jean-dep.jpg" alt="jean" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean+cushman&page=4&pagesize=20&display=thumbcap&action=search&pnum=P07665">Jean in California, </a>March 1955</p>
+		</div> <!-- /.card -->
+
+		<div id="photo37" class="card">
+			<img src="./assets/synced/img/cush-photos/jean-dep1.jpg" alt="jean" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean&page=2&pagesize=20&display=thumbcap&action=search&pnum=P05045">Jean in her front yard,</a> October 1951</p>
+		</div>
+
+		<div id="photo38" class="card">
+			<img src="./assets/synced/img/cush-photos/jean-dep3.jpg" alt="fireworks" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean&page=2&pagesize=20&display=thumbcap&action=search&pnum=P05045">Jean in her front yard,</a> October 1951</p>
+		</div> <!-- /.card -->
+
+		<div id="photo39" class="card">
+			<img src="./assets/synced/img/cush-photos/fireworks2.jpg" alt="fireworks" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=fireworks&page=1&pagesize=20&display=thumbcap&action=search&pnum=P12481">Fireworks, San Francisco,</a> September 1960</p>
+		</div>
+
+		<div id="photo40" class="card">
+			<img src="./assets/synced/img/cush-photos/fireworks3.jpg" alt="fireworks" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=fireworks&page=1&pagesize=20&display=thumbcap&action=search&pnum=P12480">Fireworks, San Francisco,</a> September 1960</p>
+		</div>
+
+		<div id="photo41" class="card">
+			<img src="./assets/synced/img/cush-photos/night.jpg" alt="fireworks" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=night&page=1&pagesize=20&display=thumbcap&action=search&pnum=P08410">Owens Valley, Calif.,</a> September 1955</p>
+		</div> <!-- /.card -->
+
+		<div id="photo42" class="card">
+			<img src="./assets/synced/img/cush-photos/sunset3.jpg" alt="fireworks" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=sunset&page=6&pagesize=20&display=thumbcap&action=search&pnum=P12492">Sunset, San Francisco,</a> October 1961</p>
+		</div> <!-- /.card -->
+
+		<div id="photo43" class="card">
+			<img src="./assets/synced/img/cush-photos/travels2.jpg" alt="travels" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean+san+francisco&page=1&pagesize=20&display=thumbcap&action=search&pnum=P09661">Jean in their 1940 Lincoln Zephyr, San Francisco,</a> January 1958</p>
+		</div> <!-- /.card -->
+
+		<div id="photo45" class="card">
+			<img src="./assets/synced/img/cush-photos/women.jpg" alt="women" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=bathing&page=2&pagesize=20&display=thumbcap&action=search&pnum=P02392">Sunbather in Chicago,</a> Summer 1941</p>
+		</div> <!-- /.card -->
+
+		<div id="photo46" class="card">
+			<img src="./assets/synced/img/cush-photos/children.jpg" alt="children" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=children&page=2&pagesize=20&display=thumbcap&action=search&pnum=P02078">Annapolis, Md.,</a> September 1940</p>
+		</div> <!-- /.card -->
+
+		<div id="photo47" class="card">
+			<img src="./assets/synced/img/cush-photos/children2.jpg" alt="children" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=children&page=1&pagesize=20&display=thumbcap&action=search&pnum=P01751">Tucson, Ariz.,</a> February 1940</p>
+		</div> <!-- /.card -->
+
+		<div id="photo48" class="card">
+			<img src="./assets/synced/img/cush-photos/jean-dep2.jpg" alt="jean" class="scale-with-grid">
+				<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean&page=6&pagesize=20&display=thumbcap&action=search&pnum=P09923">Jean Cushman,</a> May 1958</p>
+		</div> <!-- /.card -->
+
+		<div id="photo49" class="card">
+			<img src="./assets/synced/img/cush-photos/escape.jpg" alt="escape" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=charles+cushman&page=2&pagesize=20&display=thumbcap&action=search&pnum=P01690">Cushman looks across the Grand Canyon in Arizona, </a> November 1939</p>
+		</div> <!-- /.card -->
+
+		<div id="photo50" class="card">
+			<img src="./assets/synced/img/cush-photos/couple.jpg" alt="couple" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean+charles&page=1&pagesize=20&display=thumbcap&action=search&pnum=P01436">Charles and Jean, Portland, Ore.,</a> September 1938</p>
+		</div> <!-- /.card -->
+
+		<div id="c4-intro" class="card">
+			<h2>Depth of field</h2>
+		</div> <!-- /.card -->
+
+		<div id="photo52" class="card">
+			<img src="./assets/synced/img/cush-photos/self.jpg" alt="cushman" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=charles+cushman&page=1&pagesize=20&display=thumbcap&action=search&pnum=P01629">Charles Cushman gazes out at the Great Smoky Mountains,</a> May 1939</p>
+		</div> <!-- /.card -->
+
+		<div id="photo53" class="card">
+			<img src="./assets/synced/img/cush-photos/storm.jpg" alt="storm" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=fire&page=9&pagesize=20&display=thumbcap&action=search&pnum=P14783">Fire in San Francisco,</a> June 1965</p>
+		</div> <!-- /.card -->
+
+		<div id="photo54" class="card">
+			<img src="./assets/synced/img/cush-photos/mythic1.jpg" alt="mythic" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=ruins&page=1&pagesize=20&display=thumbcap&action=search&pnum=P04164">Ruins from a fire on South Paulina St., Chicago,</a> January 1949</p>
+		</div> <!-- /.card -->
+
+		<div id="photo55" class="card">
+			<img src="./assets/synced/img/cush-photos/people8.jpg" alt="people" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=country%3A%22Austria%22&page=9&pagesize=20&display=thumbcap&action=browse&pnum=P13151">Balloon-seller in Austria,</a> May 1964</p>
+		</div> <!-- /.card -->
+
+		<div id="photo56" class="card">
+			<img src="./assets/synced/img/cush-photos/animal2.jpg" alt="animal" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=genre%3A%22Landscape+photographs%22&page=237&pagesize=20&display=thumbcap&action=browse&pnum=P15785">Pony in Sonoma, Calif.,</a> April 1969</p>
+		</div> <!-- /.card -->
+
+		<div id="photo57" class="card">
+			<img src="./assets/synced/img/cush-photos/chicagokids.jpg" alt="chicago kids" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=chicago+children&page=3&pagesize=20&display=thumbcap&action=search&pnum=P04222">Chicago children,</a> March 1949</p>
+		</div> <!-- /.card -->
+
+		<div id="photo60" class="card">
+			<img src="./assets/synced/img/cush-photos/birds.jpg" alt="birds" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=birds&page=3&pagesize=20&display=thumbcap&action=search&pnum=P07524">Birds over Alamo Square, San Francisco,</a> November 1954</p>
+		</div> <!-- /.card -->
+
+		<div id="photo61" class="card">
+			<img src="./assets/synced/img/cush-photos/cloud.jpg" alt="cloud" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=genre%3A%22Landscape+photographs%22&page=112&pagesize=20&display=thumbcap&action=browse&pnum=P08404">Clouds over the Sierra Nevada mountains,</a> September 1955</p>
+		</div> <!-- /.card -->
+
+		<div id="photo63" class="card">
+			<img src="./assets/synced/img/cush-photos/flowers.jpg" alt="flowers" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=flowers&page=7&pagesize=20&display=thumbcap&action=search&pnum=P02249">Picking violets in Upton, Ind.,</a> April 1941</p>
+		</div> <!-- /.card -->
+
+		<div id="photo64" class="card">
+			<img src="./assets/synced/img/cush-photos/mythic3.jpg" alt="mythic" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=construction&page=4&pagesize=20&display=thumbcap&action=search&pnum=P13797">Demolition in San Francisco,</a> October 1964</p>
+		</div> <!-- /.card -->
+
+		<div id="photo66" class="card">
+			<img src="./assets/synced/img/cush-photos/people.jpg" alt="people" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=children&page=19&pagesize=20&display=thumbcap&action=search&pnum=P14040">Children in an Istanbul suburb,</a> April 1965</p>
+		</div> <!-- /.card -->
+
+		<div id="photo67" class="card">
+			<img src="./assets/synced/img/cush-photos/hobos.jpg" alt="hobos" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=genre%3A%22Portraits%22&page=2&pagesize=20&display=thumbcap&action=browse&pnum=P02302">Three "bums" in Battery Park, New York City,</a> June 1941</p>
+		</div> <!-- /.card -->
+
+		<div id="photo68" class="card">
+			<img src="./assets/synced/img/cush-photos/redtree1938.jpg" alt="red tree" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=year%3A1938&page=7&pagesize=20&display=thumbcap&action=browse&pnum=P01533">Posey County, Ind.,</a> November 1938</p>
+		</div> <!-- /.card -->
+
+		<div id="photo69" class="card">
+			<img src="./assets/synced/img/cush-photos/witness1.jpg" alt="witness1" class="scale-with-grid">
+		<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=children&page=3&pagesize=20&display=thumbcap&action=search&pnum=P02235">Albion, Ill.,</a> April 1941</p>
+		</div> <!-- /.card -->
+
+		<div id="photo69b" class="card">
+			<img src="./assets/synced/img/cush-photos/witness2.jpg" alt="witness2" class="scale-with-grid">
+		<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=children&page=3&pagesize=20&display=thumbcap&action=search&pnum=P02527">Old house in Hazleton, Penn.,</a> Sept. 1941</p>
+		</div> <!-- /.card -->
+
+		<div id="photo70" class="card">
+			<img src="./assets/synced/img/cush-photos/couple2.jpg" alt="couple" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=jean+portland&page=1&pagesize=20&display=thumbcap&action=search&pnum=P01437">Charles and Jean, Portland, Ore.,</a> September 1938</p>
+		</div> <!-- /.card -->
+
+		<div id="photo71" class="card">
+			<img src="./assets/synced/img/cush-photos/damaged2.jpg" alt="damaged" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=genre%3A%22Landscape+photographs%22&page=238&pagesize=20&display=thumbcap&action=browse&pnum=P04332">End of roll,</a> Undated</p>
+		</div> <!-- /.card -->
+
+		<div id="photo72" class="card">
+			<img src="./assets/synced/img/cush-photos/damaged.jpg" alt="damaged" class="scale-with-grid">
+			<p class="photo-info"><a href="https://webapp1.dlib.indiana.edu/cushman/results/detail.do?query=genre%3A%22Landscape+photographs%22&page=238&pagesize=20&display=thumbcap&action=browse&pnum=P15816">Undated</a></p>
+		</div> <!-- /.card -->
+
+		<div id="c5-intro" class="card">
+			<h2>Share this story</h2>
+
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://n.pr/Nr538s" data-text="1938 in color! An interactive on the amazing found photos of Charles W. Cushman" data-via="nprnews" data-hashtags="nprcushman">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<div class="fb-like" data-href="https://apps.npr.org/cushman-lost-and-found/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="arial"></div>
+
+	<div id="quotes">
+
+			<blockquote>
+				<p>&quot;Photography is not a contest&#8230; It's about being a witness to your times.&quot;</p>
+				<h5>&#8212;Rich Remsberg</h5>
+			</blockquote>
+
+			<blockquote>
+				<p>&quot;He was a hobbyist&#8230; but he was also an obsessive. You put those two things together and you've got a certain kind of picture-taker.&quot;</p>
+				<h5>&#8212;Eric Sandweiss</h5>
+			</blockquote>
+
+	</div><!--/quotes -->
+
+	<a id="lm" href="#learn">
+			<h3>Learn More  &darr;</h3>
+	</a><!-- /lm -->
+
+		</div> <!-- /.card -->
+
+	</div><!-- /panel-inner -->
+
+</div><!-- /chapter1 -->
+
+
+
+<!-- !learn -->
+<div id="learn">
+
+	<div class="container">
+
+		<div id="about" class="four columns">
+
+			<img src="./assets/synced/img/cushman-legacy.jpg" alt="cushman-legacy" class="scale-with-grid">
+
+
+		</div><!--/four-->
+
+		<div id="cushman-legacy" class="eleven columns offset-by-one">
+			<h2>a little bit more</h2>
+
+			<p>There's so much more to learn from the <a href="https://webapp1.dlib.indiana.edu/cushman/overview/cushmanContext.jsp">The Charles W. Cushman Photograph Collection</a>, housed at Indiana University. Archival image researcher Rich Remsberg, whose voice you heard above, has <a href="https://webapp1.dlib.indiana.edu/cushman/overview/cushmanContext.jsp">an introductory essay</a>. And historian Eric Sandweiss brings it to life in his book, <i>The Day In Its Color</i>, (Oxford University Press, 2012).</p>
+
+			<p>But the most helpful guide to these photos was left by Cushman himself. He took meticulous notes about each and every photograph, filling dozens of notebooks with details about where he was and when. So, for example, we know that the Golden Gate Bridge photo was taken on a cloudless day in September, 1938&#8230; and 1953 and 1954&#8230; and 1968. You get the point.</p>
+
+			<div id="notebooks">
+
+
+		<div class="carousel">
+	    <div id="first-note" data-before="am.html">
+	    	<h2>The Notebooks</h2>
+	        <img alt="" src="./assets/synced/img/notebooks.jpg">
+	        <h6><a href="https://webapp1.dlib.indiana.edu/cushman/">Courtesy of The Charles W. Cushman Photograph Collection/Indiana University</a></h6>
+	    </div>
+	</div><!-- /carousel -->
+
+	</div><!-- /notebooks -->
+
+		<p>Although the bridge, as a recurring image, stays consistent over three decades, the things surrounding it don't. Cushman's cars change. So do his clothes. America evolves before our very eyes &#8212; if we're patient enough to wade through hundreds of images in chronological order. New railroads influence commerce, highways connect people and machines replace horses. Cushman saw it happening and, for whatever reason, felt compelled to document history as it unfolded. That's what separates him from the vacation photographer: Why else would someone photograph a smokestack outside of Chicago?</p>
+
+		<p>There's a tidy organization to Cushman's photos, but there's also a serendipity. Dig around the archives and you'll unearth lush landscapes, impressionistic florals and self-portraits that, with hindsight, we can describe as brooding.</p>
+		<div  id="cushman-book"><a href="https://www.npr.org/books/titles/161016647/the-day-in-its-color-charles-cushmans-photographic-journey-through-a-vanishing-a" alt="cushman book"><img src="./assets/synced/img/cush-book.jpg" alt="cush-book"><p>The Day In Its Color (Oxford University Press, 2012)</p></a></div>
+
+		<p>As Sandweiss explains, Cushman's photographs were mediated by his tumultuous marriage with Jean. He was born in the very small town of Poseyville, Indiana, but married into an established Chicago family. Jean was cousins with John Steinbeck, incidentally; and she came undone after her father's death. From then on, it seems, Cushman's photographs gave him a kind of therapy.</p>
+
+		<p>We do the same thing today. We put frames around moments to make sense of them &#8212; to make them last. Although these days, it's easy to create 14,500 images in an aggressive week of digital shooting. We capture everything &#8212; from birthdays to sunsets to what's for lunch. But Cushman provokes a question: Are we just making noise, or are we really processing the passage of time?</p>
+
+		<p>&quot;He's a great reminder&#8230;&quot; Remsberg says, &quot;that photography is not a contest. &#8230; It's about being a witness to your times.&quot;</p>
+
+		<p>So: Are you a witness?</p>
+
+		<p><i>We would love to have your thoughts about these photos, about this presentation, and about your relationship to photography and your time. Please visit <a href="https://www.npr.org/templates/story/story.php?storyId=161016597">The Picture Show</a> blog to leave your comments.</i></p>
+
+		<p>You can explore all of Cushman's photos at your own pace <a href="https://webapp1.dlib.indiana.edu/cushman/overview/cushmanContext.jsp">on the Indiana University website</a>.</p>
+
+		<div id="about-project">
+		<h3>About the project</h3>
+			<p>"Lost and Found" was published on NPR's Picture Show on Sept. 14, 2012. It was produced and reported by <a href="https://twitter.com/oneillclaire">Claire O'Neill</a> and designed and developed by <a href="https://twitter.com/lindamood">Wesley Lindamood</a>. </p>
+			<p>Photographs by Charles W. Cushman, courtesy of <a href="https://webapp1.dlib.indiana.edu/cushman/">The Charles W. Cushman Photograph Collection/Indiana University</a> and Eric Sandweiss, author of <a href="https://www.npr.org/templates/story/story.php?storyId=161016647">The Day In Its Color</a> (Oxford University Press, 2012). Portrait of Rich Remsberg by Robb Hill. Music: "The Mountain," "Chimera" and "Vibe Drive" by <a href="https://podingtonbear.com/">Chad Crouch</a> (Podington Bear), Animated car background gif adapted from <a href="https://archive.org/details/HomeMovieCan11314JohnRiederCollectionFromTheAtlanticToTheBlue">moving image collection of Archive.org</a>. Thanks for visiting!
+			</p>
+		</div>
+
+		</div><!--/twelve-->
+	</div><!-- /container -->
+
+	<div id="footer" class="container">
+		<h3 class="sixteen columns">More from The Picture Show</h3>
+		<div class="four columns">
+			<a href="https://www.npr.org/blogs/pictureshow/2012/07/14/156721610/rare-photos-one-of-woody-guthries-last-shows">
+			<img src="./assets/synced/img/promo-woody.jpg" alt="promo" class="scale-with-grid">
+			<p>Rare Photos: One Of Woody Guthrie's Last Shows</p>
+			</a>
+		</div><!-- /four -->
+		<div class="four columns">
+			<a href="https://www.npr.org/blogs/pictureshow/2012/06/07/152704170/what-lies-beneath-the-new-york-times-a-lively-morgue-and-its-lonely-keeper">
+			<img src="./assets/synced/img/promo-lively.jpg" alt="promo" class="scale-with-grid">
+			<p>What Lies Beneath The New York Times? A Lively Morgue And Its Lonely Keeper</p>
+			</a>
+		</div><!-- /four -->
+		<div class="four columns">
+			<a href="https://www.npr.org/blogs/pictureshow/2012/03/29/149607939/found-in-a-closet-a-photo-trove-of-60s-icons">
+			<img src="./assets/synced/img/promo-closet.jpg" alt="promo" class="scale-with-grid">
+			<p>Found In A Closet: A Photo Trove Of '60s Icons</p>
+			</a>
+		</div><!-- /four -->
+		<div class="four columns">
+			<a href="https://www.npr.org/blogs/pictureshow/2012/03/26/149391425/the-democratic-eye-of-dennis-darling-a-photography-retrospective-by-email">
+			<img src="./assets/synced/img/promo-email.jpg" alt="promo" class="scale-with-grid">
+			<p>A Lifetime Of Photos In A Little Email Retrospective</p>
+			</a>
+		</div><!-- /four -->
+
+	</div><!-- /footer -->
+</div><!-- /learn -->
+
+<%= t.include("partials/_footer.html") %>
+<%= t.include("partials/_analytics.html") %>
+
+<!--[if lt IE 8 ]>
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+</body>
 </html>

@@ -2,30 +2,35 @@
   "s3": {
     "stage": {
       "bucket": "stage-apps.npr.org",
-      "path": "cushman"
+      "path": "cushman-lost-and-found"
     },
     "live": {
       "bucket": "apps.npr.org",
-      "path": "cushman"
+      "path": "cushman-lost-and-found"
     }
   },
   "styles": {
     "src/css/seed.less": "build/style.css"
   },
   "scripts": {
-    "src/js/main.js": "build/app.js"
+    "src/js/libs/modernizr-2.0.6.min.js": "build/modernizr-2.0.6.min.js",
+    "src/js/libs/jquery-1.6.2.min.js": "build/jquery-1.6.2.min.js",
+    "src/js/libs/popcorn-complete.min.js": "build/popcorn-complete.min.js",
+    "src/js/plugins.js": "build/plugins.js",
+    "src/js/text.js": "build/text.js"
   },
-  "title": "",
-  "description": "",
-  "url": "",
-  "image": "assets/logo.png",
+  "title": "Lost and Found: The Amazing Story Of Charles Cushman In Full Color",
+  "description": "Once upon a time there was a man named Charles W. Cushman. A hobbyist, he was a very early adopter of color film, and archives like his are rare. That is, archives this vast and this good. Beyond his photos lies a story of road trips, attempted murder, and the lifelong search for depth of field.",
+  "descriptionSocial": "In the late 1930s, color film was pretty rare. But one amateur named Charles Cushman couldn't get enough. Over three decades he shot more than 14,000 photos of an era we usually see in black-and-white -- including one of the first color photos of the Golden Gate Bridge. Check out this special interactive to learn more.",
+  "url": "https://apps.npr.org/cushman-lost-and-found/",
+  "image": "https://apps.npr.org/cushman-lost-and-found/assets/synced/img/cush-photos/goldengate1938.jpg",
   "analytics": {
-    "topicIDs": [],
-    "primaryTopic": "",
-    "secondaryTopics": []
+    "topicIDs": [1143,1136],
+    "primaryTopic": "Photography",
+    "secondaryTopics": ["Photography", "History"]
   },
   "sheets": [],
   "docs": {},
-  "embedded": true,
-  "production": false
+  "embedded": false,
+  "production": true
 }

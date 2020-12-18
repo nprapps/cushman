@@ -1,1 +1,42 @@
-@import "base";
+@import "values";
+@import "cushman-skeleton";
+@import "cushman-style";
+@import "jplayer-black-and-yellow";
+
+body {
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer {
+  font: 12px/1.4 @sans;
+  color: #787878;
+  padding: 20px 15px;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 10px;
+      padding: 0;
+    }
+  }
+
+  a {
+    &:link, &:visited {
+      color: #999;
+      text-decoration: none;
+    }
+
+    &:hover, &:active {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+}

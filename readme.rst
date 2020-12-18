@@ -1,7 +1,9 @@
-cushman
+Lost and Found
 ======================================================
 
-This news app is built on our `interactive template <https://github.com/nprapps/interactive-template>`_. Check the readme for that template for more details about the structure and mechanics of the app, as well as how to start your own project.
+Once upon a time there was a man named Charles W. Cushman. A hobbyist, he was a very early adopter of color film, and archives like his are rare. That is, archives this vast and this good. Beyond his photos lies a story of road trips, attempted murder, and the lifelong search for depth of field.
+
+This project was originally published in 2012. It was partially ported over to the NPR News Apps `interactive template <https://github.com/nprapps/interactive-template>`_ in 2020 and moved to apps.npr.org.
 
 Getting started
 ---------------
@@ -17,6 +19,7 @@ With those installed, you can then set the project up using your terminal:
 #. Pull the code - ``git clone git@github.com:nprapps/cushman``
 #. Enter the project folder - ``cd cushman``
 #. Install dependencies from NPM - ``npm install``
+#. Sync files ``grunt sync``
 #. Start the server - ``grunt``
 
 Running tasks
@@ -26,6 +29,7 @@ Like all interactive-template projects, this application uses the Grunt task run
 
 Common tasks that you may want to run include:
 
+* ``sync`` - sync photo, audio and other large media assets between S3 and your local computer
 * ``sheets`` - updates local data from Google Sheets
 * ``docs`` - updates local data from Google Docs
 * ``google-auth`` - authenticates your account against Google for private files
