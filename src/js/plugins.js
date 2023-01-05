@@ -1,3 +1,5 @@
+require("./analytics");
+
 /*
  * jPlayer Plugin for jQuery JavaScript Library
  * http://www.happyworm.com/jquery/jplayer
